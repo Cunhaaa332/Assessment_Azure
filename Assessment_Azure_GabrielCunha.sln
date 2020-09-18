@@ -3,13 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30002.166
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmigosApi", "AmigosApi\AmigosApi.csproj", "{5AC51B70-726F-40AE-9BCE-43AF200AC358}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectApi", "AmigosApi\ProjectApi.csproj", "{5AC51B70-726F-40AE-9BCE-43AF200AC358}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{D004952C-4320-47DD-BF4B-278DF80D6A87}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository", "Repository\Repository.csproj", "{17CCF461-9F3C-48C4-9F0C-65F340C031E9}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LugaresApi", "LugaresApi\LugaresApi.csproj", "{AA012500-9D41-4031-9F33-24CE6C19EADD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +27,6 @@ Global
 		{17CCF461-9F3C-48C4-9F0C-65F340C031E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{17CCF461-9F3C-48C4-9F0C-65F340C031E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{17CCF461-9F3C-48C4-9F0C-65F340C031E9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AA012500-9D41-4031-9F33-24CE6C19EADD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AA012500-9D41-4031-9F33-24CE6C19EADD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AA012500-9D41-4031-9F33-24CE6C19EADD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AA012500-9D41-4031-9F33-24CE6C19EADD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
