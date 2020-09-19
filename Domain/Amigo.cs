@@ -12,7 +12,9 @@ namespace Domain {
         public string Email { get; set; }
         public string Telefone { get; set; }
         public DateTime Birth { get; set; }
+        [JsonIgnore]
         public virtual Pais Pais { get; set; }
+        [JsonIgnore]
         public virtual Estado Estado { get; set; }
         [JsonIgnore]
         public virtual IList<Amigo> Amigos { get; set; }
@@ -25,13 +27,8 @@ namespace Domain {
         public string Email { get; set; }
         public string Telefone { get; set; }
         public DateTime Birth { get; set; }
-        public int IdPais { get; set; }
-        public int IdEstado { get; set; }
-
-        public List<string> Erros() {
-
-            return new List<string>();
-        }
+        public Pais Pais { get; set; }
+        public Estado Estado { get; set; }
     }
 }
 

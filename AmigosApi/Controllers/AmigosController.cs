@@ -26,14 +26,14 @@ namespace ProjectApi.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Amigo>>> GetAmigos()
         {
-            return await _context.Amigos.Include(x => x.Amigos).ToListAsync();
+            return await _context.Amigos.Include(x => x.Pais).Include(x => x.Estado).Include(x => x.Amigos).ToListAsync();
         }
 
         // GET: api/Amigos/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Amigo>> GetAmigo(int id)
         {
-            var amigo = await _context.Amigos.Include(x => x.Amigos).FirstOrDefaultAsync(x => x.Id == id);
+            var amigo = await _context.Amigos.Include(x => x.Estado).Include(x => x.Pais).Include(x => x.Amigos).FirstOrDefaultAsync(x => x.Id == id);
 
             if (amigo == null)
             {
@@ -82,8 +82,15 @@ namespace ProjectApi.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<Amigo>> PostAmigo(Amigo amigo)
+        public async Task<ActionResult<Amigo>> PostAmigo(AmigoResponse amigoResponse)
         {
+            var paisTaker = await _context.Paises.FirstOrDefaultAsync(x => x.Id == amigoResponse.Pais.Id);
+            var estadoTaker = await _context.Estados.FirstOrDefaultAsync(x => x.Id == amigoResponse.Estado.Id);
+            amigoResponse.Pais = paisTaker;
+            amigoResponse.Estado = estadoTaker;
+
+            Amigo amigo = new Amigo { Nome = amigoResponse.Nome, Sobrenome = amigoResponse.Sobrenome, Foto = amigoResponse.Foto, Email = amigoResponse.Email, Telefone = amigoResponse.Telefone, 
+                Birth = amigoResponse.Birth, Pais = amigoResponse.Pais, Estado = amigoResponse.Estado };
             _context.Amigos.Add(amigo);
             await _context.SaveChangesAsync();
 
