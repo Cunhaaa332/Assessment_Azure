@@ -8,7 +8,7 @@ namespace Domain {
         public int Id { get; set; }
         public string Nome { get; set; }
         public string Bandeira { get; set; }
-        [JsonIgnore]
+        //[JsonIgnore]
         public virtual Pais Pais { get; set; }
     }
     public class EstadoResponse {

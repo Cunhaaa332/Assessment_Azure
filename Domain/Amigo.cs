@@ -12,9 +12,9 @@ namespace Domain {
         public string Email { get; set; }
         public string Telefone { get; set; }
         public DateTime Birth { get; set; }
-        [JsonIgnore]
+        //[JsonIgnore]
         public virtual Pais Pais { get; set; }
-        [JsonIgnore]
+        //[JsonIgnore]
         public virtual Estado Estado { get; set; }
         [JsonIgnore]
         public virtual IList<Amigo> Amigos { get; set; }

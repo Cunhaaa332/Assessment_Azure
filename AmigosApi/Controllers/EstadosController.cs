@@ -32,7 +32,7 @@ namespace ProjectApi.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Estado>> GetEstado(int id)
         {
-            var estado = await _context.Estados.FindAsync(id);
+            var estado = await _context.Estados.Include(x => x.Pais).FirstOrDefaultAsync(x => x.Id == id);
 
             if (estado == null)
             {
