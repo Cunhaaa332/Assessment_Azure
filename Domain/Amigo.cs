@@ -14,10 +14,10 @@ namespace Domain {
         public DateTime Birth { get; set; }
         //[JsonIgnore]
         public virtual Pais Pais { get; set; }
-        //[JsonIgnore]
+        //  [JsonIgnore]
         public virtual Estado Estado { get; set; }
-        [JsonIgnore]
-        public virtual IList<Amigo> Amigos { get; set; }
+        //[JsonIgnore]
+        public virtual IList<Parceiro> Amigos { get; set; }
     }
     public class AmigoResponse {
         public int Id { get; set; }
@@ -29,6 +29,7 @@ namespace Domain {
         public DateTime Birth { get; set; }
         public Pais Pais { get; set; }
         public Estado Estado { get; set; }
+        public virtual IList<Parceiro> Amigos { get; set; }
     }
 }
 

@@ -101,13 +101,16 @@ namespace ProjectApi.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<Amigo>> DeleteAmigo(int id)
         {
-            var amigo = _context.Amigos.Find(id);
+            var amigo = await _context.Amigos.Include(x => x.Amigos).FirstOrDefaultAsync(x => x.Id == id);
             if (amigo == null) {
                 return NotFound();
             }
 
             using (var transection = _context.Database.BeginTransaction()) {
                 try {
+                    foreach (var item in amigo.Amigos) {
+                        _context.Parceiros.Remove(item);
+                    }
                     _context.Amigos.Remove(amigo);
                     await _context.SaveChangesAsync();
                     transection.Commit();

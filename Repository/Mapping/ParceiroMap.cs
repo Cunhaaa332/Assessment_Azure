@@ -6,21 +6,17 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace Repository.Mapping {
-    public class AmigoMap : IEntityTypeConfiguration<Amigo> {
-        public void Configure(EntityTypeBuilder<Amigo> builder) {
-            builder.ToTable("Amigo");
+    public class ParceiroMap : IEntityTypeConfiguration<Parceiro> {
+        public void Configure(EntityTypeBuilder<Parceiro> builder) {
+            builder.ToTable("Parceiro");
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Id).IsRequired().ValueGeneratedOnAdd();
 
             builder.Property(x => x.Nome).IsRequired().HasMaxLength(200);
             builder.Property(x => x.Sobrenome).IsRequired().HasMaxLength(200);
-            builder.Property(x => x.Foto).IsRequired().HasMaxLength(500);
             builder.Property(x => x.Email).IsRequired().HasMaxLength(200);
             builder.Property(x => x.Telefone).IsRequired().HasMaxLength(200);
-            builder.Property(x => x.Birth).IsRequired();
-            builder.HasMany<Parceiro>(x => x.Amigos);
-            builder.HasOne<Pais>(x => x.Pais);
-            builder.HasOne<Estado>(x => x.Estado);
+            builder.HasOne<Amigo>(x => x.Amigo);
         }
     }
 }

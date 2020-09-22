@@ -91,7 +91,7 @@ namespace ProjectApi.Controllers
         public async Task<ActionResult<Estado>> DeleteEstado(int id)
         {
             var estado = await _context.Estados.FindAsync(id);
-            var amigos = await _context.Amigos.ToListAsync();
+            var amigos = await _context.Amigos.Include(x => x.Amigos).ToListAsync();
 
             if (estado == null) {
                 return NotFound();
@@ -99,10 +99,13 @@ namespace ProjectApi.Controllers
 
             using (var transection = _context.Database.BeginTransaction()) {
                 try {
-                    //foreach (var item in amigos) {
-                    //    if ((item.Estado.Id) == estado.Id)
-                    //        _context.Amigos.Remove(item);
-                    //}
+                    foreach (var item in amigos) {
+                        if ((item.Estado.Id) == estado.Id)
+                            foreach (var itemP in item.Amigos) {
+                                _context.Parceiros.Remove(itemP);
+                            }
+                            _context.Amigos.Remove(item);
+                    }
                     _context.Estados.Remove(estado);
                     await _context.SaveChangesAsync();
                     transection.Commit();

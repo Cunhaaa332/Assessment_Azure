@@ -86,7 +86,7 @@ namespace ProjectApi.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<Pais>> DeletePais(int id) {
             var pais = await _context.Paises.Include(x => x.Estados).FirstOrDefaultAsync(x => x.Id == id);
-            var amigos = await _context.Amigos.ToListAsync();
+            var amigos = await _context.Amigos.Include(x => x.Pais).Include(x => x.Amigos).ToListAsync();
 
             if (pais == null) {
                 return NotFound();
@@ -99,10 +99,13 @@ namespace ProjectApi.Controllers
                         _context.Estados.Remove(item);
                     }
 
-                    //foreach (var item in amigos) {
-                    //    if ((item.Pais.Id) == pais.Id)
-                    //        _context.Amigos.Remove(item);
-                    //}
+                    foreach (var item in amigos) {
+                        if ((item.Pais.Id) == pais.Id)
+                            foreach (var itemP in item.Amigos) {
+                                _context.Parceiros.Remove(itemP);
+                            }
+                        _context.Amigos.Remove(item);
+                    }
                     _context.Paises.Remove(pais);
                     await _context.SaveChangesAsync();
                     transection.Commit();

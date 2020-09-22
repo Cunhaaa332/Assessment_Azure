@@ -11,4 +11,10 @@ namespace Domain {
        [JsonIgnore]
         public virtual IList<Estado> Estados { get; set; }
     }
+    public class PaisResponse {
+        public int Id { get; set; }
+        public string Nome { get; set; }
+        public string Bandeira { get; set; }
+        public virtual IList<Estado> Estados { get; set; }
+    }
 }

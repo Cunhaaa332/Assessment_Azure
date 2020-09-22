@@ -10,6 +10,7 @@ namespace Repository.Mapping.Context {
         public DbSet<Amigo> Amigos { get; set; }
         public DbSet <Pais> Paises { get; set; }
         public DbSet<Estado> Estados { get; set; }
+        public DbSet<Parceiro> Parceiros { get; set; }
 
         public static readonly ILoggerFactory loggerFactory = LoggerFactory.Create(b => { b.AddConsole(); });
 
@@ -27,6 +28,7 @@ namespace Repository.Mapping.Context {
             modelBuilder.ApplyConfiguration(new AmigoMap());
             modelBuilder.ApplyConfiguration(new PaisMap());
             modelBuilder.ApplyConfiguration(new EstadoMap());
+            modelBuilder.ApplyConfiguration(new ParceiroMap());
 
             base.OnModelCreating(modelBuilder);
         }

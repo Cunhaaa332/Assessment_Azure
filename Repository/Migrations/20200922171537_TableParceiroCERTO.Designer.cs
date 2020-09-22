@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Repository.Mapping.Context;
 
 namespace Repository.Migrations
 {
     [DbContext(typeof(ProjectContext))]
-    partial class ProjectContextModelSnapshot : ModelSnapshot
+    [Migration("20200922171537_TableParceiroCERTO")]
+    partial class TableParceiroCERTO
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -123,43 +125,6 @@ namespace Repository.Migrations
                     b.ToTable("Pais");
                 });
 
-            modelBuilder.Entity("Domain.Parceiro", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("AmigoId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(200)")
-                        .HasMaxLength(200);
-
-                    b.Property<string>("Nome")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(200)")
-                        .HasMaxLength(200);
-
-                    b.Property<string>("Sobrenome")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(200)")
-                        .HasMaxLength(200);
-
-                    b.Property<string>("Telefone")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(200)")
-                        .HasMaxLength(200);
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AmigoId");
-
-                    b.ToTable("Parceiro");
-                });
-
             modelBuilder.Entity("Domain.Amigo", b =>
                 {
                     b.HasOne("Domain.Amigo", null)
@@ -180,13 +145,6 @@ namespace Repository.Migrations
                     b.HasOne("Domain.Pais", "Pais")
                         .WithMany("Estados")
                         .HasForeignKey("PaisId");
-                });
-
-            modelBuilder.Entity("Domain.Parceiro", b =>
-                {
-                    b.HasOne("Domain.Amigo", "Amigo")
-                        .WithMany()
-                        .HasForeignKey("AmigoId");
                 });
 #pragma warning restore 612, 618
         }

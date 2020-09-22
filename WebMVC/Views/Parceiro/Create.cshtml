@@ -1,4 +1,4 @@
-﻿@model WebMVC.Models.AmigoModel.CriarAmigoViewModel
+﻿@model WebMVC.Models.ParceiroModel.CriarParceiroViewModel
 
 @{
     ViewData["Title"] = "Create";
@@ -6,11 +6,11 @@
 
 <h1>Create</h1>
 
-<h4>CriarAmigoViewModel</h4>
+<h4>CriarParceiroViewModel</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create" enctype="multipart/form-data">
+        <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Nome" class="control-label"></label>
@@ -23,11 +23,6 @@
                 <span asp-validation-for="Sobrenome" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Fotoarq" class="control-label"></label>
-                <input type="file" asp-for="Fotoarq" class="form-control" required/>
-                <span asp-validation-for="Fotoarq" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="Email" class="control-label"></label>
                 <input asp-for="Email" class="form-control" required/>
                 <span asp-validation-for="Email" class="text-danger"></span>
@@ -38,19 +33,9 @@
                 <span asp-validation-for="Telefone" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Birth" class="control-label"></label>
-                <input asp-for="Birth" class="form-control" required/>
-                <span asp-validation-for="Birth" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Pais" class="control-label"></label>
-                <input asp-for="Pais.Id" class="form-control" required/>
-                <span asp-validation-for="Pais" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Estado" class="control-label"></label>
-                <input asp-for="Estado.Id" class="form-control" required/>
-                <span asp-validation-for="Estado" class="text-danger"></span>
+                <label asp-for="Amigo" class="control-label"></label>
+                <input asp-for="Amigo.Id" class="form-control" required/>
+                <span asp-validation-for="Amigo" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
