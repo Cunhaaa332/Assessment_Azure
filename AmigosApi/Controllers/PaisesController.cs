@@ -54,7 +54,7 @@ namespace ProjectApi.Controllers
             }
             var paisMod = _context.Paises.Find(id);
             paisMod.Nome = pais.Nome;
-            paisMod.Bandeira = pais.Bandeira;
+            paisMod.Bandeira = paisMod.Bandeira;
 
             _context.Paises.Update(paisMod);
 
@@ -100,11 +100,12 @@ namespace ProjectApi.Controllers
                     }
 
                     foreach (var item in amigos) {
-                        if ((item.Pais.Id) == pais.Id)
+                        if ((item.Pais.Id) == pais.Id) {
                             foreach (var itemP in item.Amigos) {
                                 _context.Parceiros.Remove(itemP);
                             }
-                        _context.Amigos.Remove(item);
+                            _context.Amigos.Remove(item);
+                        }
                     }
                     _context.Paises.Remove(pais);
                     await _context.SaveChangesAsync();

@@ -56,12 +56,12 @@ namespace ProjectApi.Controllers
             var amigoMod = _context.Amigos.Find(id);
             amigoMod.Nome = amigo.Nome;
             amigoMod.Sobrenome = amigo.Sobrenome;
-            amigoMod.Foto = amigo.Foto;
+            amigoMod.Foto = amigoMod.Foto;
             amigoMod.Email = amigo.Email;
             amigoMod.Telefone = amigo.Telefone;
             amigoMod.Birth = amigo.Birth;
-            amigoMod.Pais = amigo.Pais;
-            amigoMod.Estado = amigo.Estado;
+            amigoMod.Pais = amigoMod.Pais;
+            amigoMod.Estado = amigoMod.Estado;
 
             _context.Amigos.Update(amigoMod);
 
